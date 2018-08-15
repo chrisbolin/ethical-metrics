@@ -19,3 +19,7 @@ Browser fingerprint, salted with public key, hashed, sent over SSL, re-salted wi
 - public pledge for participating organizations
 - pledge branding for participating organizations
 - client and server libraries 
+
+## Contributing
+
+At this stage, open issues and PRs with ideas and feedback. Thanks!
