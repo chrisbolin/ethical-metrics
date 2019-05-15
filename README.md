@@ -23,9 +23,11 @@ This is of course debatable, but here are some basic rules:
 
 ## What Metrics?
 
-- Unique visitor tracking
+- Unique visitors
 - Pageviews (by URL)
 - Timestamps
+- Referrers
+- Screen sizes
 
 ## Example: Possible Approach
 
