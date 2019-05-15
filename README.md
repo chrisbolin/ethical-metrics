@@ -31,13 +31,13 @@ This is of course debatable, but here are some basic rules:
 
 ## Example: Possible Approach
 
-1. Browser fingerprint
+1. Get browser fingerprint
 1. Salt with public key
-1. Hashed
-1. Transfered to metrics server via SSL
-1. Re-salted with a private key
-1. Re-hashed
-2. Stored
+1. Hash
+1. Transfer to metrics server via SSL
+1. Re-salt with a private key
+1. Re-hash
+1. Store
 
 In this example PII (really DII: _Device_ Identifiable Information) is obscured, transferred securely, and never stored (only its salted hash is stored). Even if it was leaked (e.g. [mistakenly in a log](https://www.bleepingcomputer.com/news/security/twitter-admits-recording-plaintext-passwords-in-internal-logs-just-like-github/)) it is obfuscated by the public hash and therefore less widely applicable (only this specific participating site has this dataset). The 2nd, private-key re-salting may be excessive (but it's hard to see it as pointless). 
 
