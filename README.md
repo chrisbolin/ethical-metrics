@@ -32,7 +32,7 @@ This is of course debatable, but here are some basic rules:
 ## Example: Possible Approach
 
 1. Get browser fingerprint
-1. Salt with public key
+1. Salt with public key - could be the domain string, as this is static, reliable, and does not have to be configured
 1. Hash
 1. Transfer to metrics server via SSL
 1. Re-salt with a private key
