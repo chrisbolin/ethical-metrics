@@ -1,6 +1,8 @@
 # Ethical Metrics
 
-Present website metric collection sits somewhere between creepy and unethical (see browser fingerprinting, cross-domain tracking, and hidden iframes). And yet reliably tracking site usage is a necessary part of running most businesses. Is there a way to have _ethical_ metric collection?
+Present website metric collection sits somewhere between creepy and unethical (see browser fingerprinting, cross-domain tracking, and hidden iframes). And yet reliably tracking site usage is a necessary part of running most websides, much less online businesses.
+
+Is there a way to have _ethical_ metric collection?
 
 ## Goals
 
