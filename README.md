@@ -9,6 +9,22 @@ These two goals, which are decidedly in tension, should be pursued:
 - **Respect every user's privacy.** Don't share their information with other parties. Be very careful with personally identifiable information (PII).
 - **Gather useful user metrics.** Gather reliable site usage statistics. Effectively track unique vists.
 
+## What's Ethical?
+
+This is of course debatable, but here are some basic rules:
+
+- No inter-site tracking
+- No PII sent or stored
+- No cookies or local storage
+- Never shared with 3rd parties
+- Worthless to 3rd parties if data is leaked or hacked
+
+## What Metrics?
+
+- Unique visitor tracking
+- Pageviews (by URL)
+- Timestamps
+
 ## Example: Possible Approach
 
 1. Browser fingerprint
