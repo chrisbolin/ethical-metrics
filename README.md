@@ -46,6 +46,13 @@ In this example PII (really DII: _Device_ Identifiable Information) is obscured,
 - pledge branding for participating organizations
 - client and server libraries 
 
+## Further Reading
+
+- [Am I Unique](https://amiunique.org) - browser fingerprinting research and public awareness campaign
+- [Beauty and the Beast: Diverting modern web browsers
+to build unique browser fingerprints](https://hal.inria.fr/hal-01285470/file/beauty-sp16.pdf) - research paper from the same group as Am I Unique
+- [Simple Analytics](https://simpleanalytics.io) - a nice example of simple metrics marketing and specs
+
 ## Contributing
 
 At this stage, open issues and PRs with ideas and feedback. Thanks!
