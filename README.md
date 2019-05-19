@@ -19,7 +19,7 @@ This is of course debatable, but here are some basic rules:
 - No PII sent or stored
 - No cookies or local storage
 - Never shared with 3rd parties
-- Worthless to 3rd parties if data is leaked or hacked
+- Data is worthless to 3rd parties, even if it was sold or leaked to them
 
 ## What Metrics?
 
