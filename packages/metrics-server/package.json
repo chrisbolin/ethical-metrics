@@ -1,0 +1,19 @@
+{
+  "name": "ethical-metrics-server",
+  "version": "1.0.0",
+  "main": "www.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node www.js",
+    "watch": "nodemon www.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "engines": {
+    "node": "^10.15.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
