@@ -1,6 +1,6 @@
 import Fingerprint from "fingerprintjs2";
 
-function wait(timeout = 500) {
+function wait(timeout = 0) {
   return new Promise(resolve => {
     if (typeof window.requestIdleCallback === "function") {
       window.requestIdleCallback(resolve, { timeout });
@@ -14,7 +14,7 @@ function hash(fingerprint, salt = "") {
   return Fingerprint.x64hash128(fingerprint + salt);
 }
 
-function makeRawFingerprint() {
+function rawFingerprint() {
   return new Promise(resolve => {
     Fingerprint.get({}, components => {
       const fingerprint = components.map(component => component.value).join("");
@@ -23,8 +23,8 @@ function makeRawFingerprint() {
   });
 }
 
-function makeFingerprint() {
-  return makeRawFingerprint().then(fingerprint =>
+function clientID() {
+  return rawFingerprint().then(fingerprint =>
     hash(fingerprint, window.location.host)
   );
 }
@@ -40,16 +40,43 @@ function timezone() {
 function metrics() {
   return {
     href: window.location.href,
-    width: window.innerWidth,
-    height: window.innerHeight,
+    innerWidth: window.innerWidth,
+    innerHeight: window.innerHeight,
     referrer: document.referrer,
     userAgent: window.navigator.userAgent,
     timezone: timezone()
   };
 }
 
+function clientIDVersion() {
+  /*
+    v0
+      fingerprint: fingerprintjs2 2.1.0
+      hash: murmur 3 via fingerprintjs2.x64hash128
+      seed: 0
+      salt: location.host
+  */
+  return "0";
+}
+
+function payload() {
+  return clientID().then(clientID => ({
+    clientID,
+    clientIDVersion: clientIDVersion(),
+    ...metrics()
+  }));
+}
+
+function send(body) {
+  console.log(body);
+  return fetch("http://localhost:3000/vists", {
+    method: "POST",
+    body: JSON.stringify(body)
+  });
+}
+
 export default function client() {
-  wait()
-    .then(makeFingerprint)
-    .then(fingerprint => console.log(fingerprint, metrics()));
+  wait(500)
+    .then(payload)
+    .then(send);
 }
