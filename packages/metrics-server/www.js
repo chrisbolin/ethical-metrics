@@ -1,5 +1,7 @@
 const express = require("express");
+
 const { prepareVisit } = require("./lib/data");
+const { listVisits, insertVisit } = require("./lib/db");
 
 const app = express();
 
@@ -14,11 +16,16 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post("/visits", (req, res) => {
-  const visit = prepareVisit(req.body);
-  console.log("INSERT INTO VISITS", visit);
-  res.status(201);
-  res.end();
-});
+app
+  .route("/visits")
+  .post((req, res) => {
+    const visit = prepareVisit(req.body);
+    insertVisit(visit);
+    res.status(201);
+    res.end();
+  })
+  .get((req, res) => {
+    res.json(listVisits());
+  });
 
 app.listen(3333);
