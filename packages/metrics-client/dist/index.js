@@ -23,7 +23,7 @@ function rawFingerprint() {
   });
 }
 
-function clientID() {
+function clientDeviceID() {
   return rawFingerprint().then(fingerprint =>
     hash(fingerprint, window.location.host)
   );
@@ -60,8 +60,8 @@ function clientIDVersion() {
 }
 
 function payload() {
-  return clientID().then(clientID => ({
-    clientID,
+  return clientDeviceID().then(clientDeviceID => ({
+    clientDeviceID,
     clientIDVersion: clientIDVersion(),
     ...metrics()
   }));

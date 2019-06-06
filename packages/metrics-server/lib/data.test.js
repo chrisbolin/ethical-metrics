@@ -32,4 +32,12 @@ describe("row", () => {
     expect(beforeCreatedAt <= newRow.createdAt).toBeTruthy();
     expect(afterCreatedAt >= newRow.createdAt).toBeTruthy();
   });
+
+  it("should create deviceID and remove clientDeviceID", () => {
+    const clientDeviceID = "123";
+    const newRow = row({ clientDeviceID });
+    expect(newRow.deviceID).toHaveLength(64);
+    expect(newRow.deviceID).not.toEqual(clientDeviceID);
+    expect(newRow.clientDeviceID).toBeUndefined();
+  });
 });
