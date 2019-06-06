@@ -1,4 +1,4 @@
-const { hash, row } = require("./data");
+const { hash, prepareVisit } = require("./data");
 
 describe("hash", () => {
   it("should hash a string", () => {
@@ -24,20 +24,20 @@ describe("hash", () => {
   });
 });
 
-describe("row", () => {
+describe("prepareVisit", () => {
   it("should add createdAt ISO timestamp", () => {
     const beforeCreatedAt = new Date().toISOString();
-    const newRow = row({});
+    const visit = prepareVisit({});
     const afterCreatedAt = new Date().toISOString();
-    expect(beforeCreatedAt <= newRow.createdAt).toBeTruthy();
-    expect(afterCreatedAt >= newRow.createdAt).toBeTruthy();
+    expect(beforeCreatedAt <= visit.createdAt).toBeTruthy();
+    expect(afterCreatedAt >= visit.createdAt).toBeTruthy();
   });
 
   it("should create deviceID and remove clientDeviceID", () => {
     const clientDeviceID = "123";
-    const newRow = row({ clientDeviceID });
-    expect(newRow.deviceID).toHaveLength(64);
-    expect(newRow.deviceID).not.toEqual(clientDeviceID);
-    expect(newRow.clientDeviceID).toBeUndefined();
+    const visit = prepareVisit({ clientDeviceID });
+    expect(visit.deviceID).toHaveLength(64);
+    expect(visit.deviceID).not.toEqual(clientDeviceID);
+    expect(visit.clientDeviceID).toBeUndefined();
   });
 });

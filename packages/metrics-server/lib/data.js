@@ -8,7 +8,7 @@ function hash(value, salt = "") {
   return shaHash.digest("hex");
 }
 
-function row(payload) {
+function prepareVisit(payload) {
   const createdAt = new Date().toISOString();
   const deviceID = hash(payload.clientDeviceID, PRIVATE_SALT);
   delete payload.clientDeviceID;
@@ -20,4 +20,4 @@ function row(payload) {
   };
 }
 
-module.exports = { hash, row };
+module.exports = { hash, prepareVisit };

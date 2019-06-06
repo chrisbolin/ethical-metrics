@@ -1,5 +1,5 @@
 const express = require("express");
-const { row } = require("./lib/data");
+const { prepareVisit } = require("./lib/data");
 
 const app = express();
 
@@ -15,7 +15,8 @@ app.use((req, res, next) => {
 });
 
 app.post("/visits", (req, res) => {
-  const newRow = row(req.body);
+  const visit = prepareVisit(req.body);
+  console.log("INSERT INTO VISITS", visit);
   res.status(201);
   res.end();
 });
