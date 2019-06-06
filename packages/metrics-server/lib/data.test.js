@@ -20,6 +20,7 @@ describe("hash", () => {
     const hashWithSalt = hash(value, salt);
 
     expect(hashWithSalt).not.toBe(hashWithoutSalt);
+    expect(hashWithSalt.length).toBe(hashWithoutSalt.length);
   });
 });
 

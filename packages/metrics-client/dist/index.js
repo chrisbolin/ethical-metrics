@@ -69,9 +69,12 @@ function payload() {
 
 function send(body) {
   console.log(body);
-  return fetch("http://localhost:3000/vists", {
+  return fetch("http://localhost:3333/visits", {
     method: "POST",
-    body: JSON.stringify(body)
+    body: JSON.stringify(body),
+    headers: {
+      "Content-Type": "application/json"
+    }
   });
 }
 
