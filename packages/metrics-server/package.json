@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node www.js",
     "watch": "nodemon www.js",
-    "test": "jest"
+    "test": "jest",
+    "clean": "rm -rf lambda*.zip",
+    "zip": "zip -r lambda-$(date +'%Y-%m-%dT%H:%M:%S').zip node_modules/ lib/ lambda.js",
+    "build": "yarn clean; yarn zip"
   },
   "dependencies": {
     "express": "^4.17.1"
