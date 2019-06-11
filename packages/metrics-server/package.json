@@ -7,9 +7,8 @@
     "start": "node www.js",
     "watch": "nodemon www.js",
     "test": "jest",
-    "clean": "rm -rf lambda*.zip",
-    "zip": "zip -r lambda-$(date +'%Y-%m-%dT%H:%M:%S').zip node_modules/ lib/ lambda.js",
-    "build": "yarn clean; yarn zip"
+    "zip": "zip -j dist/archive.zip dist/index.js",
+    "build": "rm -rf dist && webpack && yarn zip"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -20,6 +19,8 @@
   },
   "devDependencies": {
     "jest": "^24.8.0",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.3"
   }
 }
