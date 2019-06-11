@@ -6,11 +6,11 @@ exports.handler = async event => {
   return {
     statusCode: 200,
     body: JSON.stringify({
-      message: "OK",
       visit
     }),
     headers: {
-      "Access-Control-Allow-Origin": "*"
+      "Access-Control-Allow-Origin": "*",
+      "Content-Type": "application/json"
     }
   };
 };
