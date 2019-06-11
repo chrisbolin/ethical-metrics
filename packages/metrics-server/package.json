@@ -12,7 +12,8 @@
     "build": "yarn clean; yarn zip"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "ua-parser-js": "^0.7.20"
   },
   "engines": {
     "node": "^10.15.3"

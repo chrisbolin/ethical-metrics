@@ -22,7 +22,7 @@ app
     const visit = prepareVisit(req.body);
     insertVisit(visit);
     res.status(201);
-    res.end();
+    res.json(visit);
   })
   .get((req, res) => {
     res.json(listVisits());
