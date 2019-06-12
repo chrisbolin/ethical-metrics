@@ -11,14 +11,14 @@ exports.handler = async event => {
       case "POST": {
         const visit = prepareVisit(requestBody);
         await insertVisit(visit);
-        body = visit;
+        body = { message: "visit recorded" };
         statusCode = 201;
         break;
       }
       case "LINK": {
         await createVisitsTable();
         statusCode = 201;
-        body = { message: "visits created" };
+        body = { message: "visits table created" };
         break;
       }
       default: {

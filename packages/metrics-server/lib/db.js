@@ -36,21 +36,22 @@ async function createVisitsTable() {
   const client = createClient();
   const result = await client.query(`
   CREATE TABLE visits (
-      id SERIAL PRIMARY KEY,
-      "clientIDVersion" text,
-      href text,
-      "innerWidth" integer,
-      "innerHeight" integer,
-      referrer text,
-      "userAgent" text,
-      timezone text,
-      "deviceID" text,
-      "createdAt" timestamp with time zone,
-      browser text,
+      "id" SERIAL PRIMARY KEY,
+      "browser" text,
       "browserVersion" text,
-      os text,
+      "clientIDVersion" text,
+      "createdAt" timestamp with time zone,
+      "deviceID" text,
+      "hostname" text,
+      "href" text,
+      "innerHeight" integer,
+      "innerWidth" integer,
+      "model" text,
+      "os" text,
       "osVersion" text,
-      model text
+      "referrer" text,
+      "timezone" text,
+      "userAgent" text
   );
   `);
   await client.end();

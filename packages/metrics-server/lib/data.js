@@ -1,4 +1,6 @@
 const crypto = require("crypto");
+const url = require("url");
+
 const parseUA = require("ua-parser-js");
 
 const PRIVATE_SALT = "e74a3078585adff8695df9ce1102b13e";
@@ -12,11 +14,13 @@ function hash(value, salt = "") {
 function prepareVisit(payload) {
   const createdAt = new Date().toISOString();
   const userAgentDetails = parseUA(payload.userAgent);
+  const { hostname } = url.parse(payload.href);
   const deviceID = hash(payload.clientDeviceID, PRIVATE_SALT);
   delete payload.clientDeviceID;
 
   return {
     ...payload,
+    hostname,
     deviceID,
     createdAt,
     browser: userAgentDetails.browser.name,
