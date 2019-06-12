@@ -21,7 +21,7 @@ function prepareVisit(payload) {
     createdAt,
     browser: userAgentDetails.browser.name,
     browserVersion: userAgentDetails.browser.version,
-    device: userAgentDetails.device.model,
+    model: userAgentDetails.device.model,
     os: userAgentDetails.os.name,
     osVersion: userAgentDetails.os.version
   };

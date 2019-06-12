@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.json());
 
-app.route("/").post(async (req, res) => {
+app.route("/").all(async (req, res) => {
   const event = {
     body: JSON.stringify(req.body)
   };

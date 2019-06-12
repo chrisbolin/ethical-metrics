@@ -9,9 +9,6 @@ module.exports = {
     libraryTarget: "commonjs"
   },
   target: "node",
-  performance: {
-    hints: false
-  },
   stats: {
     all: false,
     assets: true
