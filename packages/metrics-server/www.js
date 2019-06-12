@@ -12,8 +12,6 @@ app.route("/").all(async (req, res) => {
     httpMethod: req.method
   };
 
-  console.log(event);
-
   const { statusCode, body, headers } = await handler(event);
 
   res.status(statusCode);

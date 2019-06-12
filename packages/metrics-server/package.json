@@ -4,7 +4,6 @@
   "main": "www.js",
   "license": "MIT",
   "scripts": {
-    "start": "node www.js",
     "watch": "nodemon www.js",
     "test": "jest",
     "zip": "zip -j dist/archive.zip dist/index.js",

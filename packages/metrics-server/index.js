@@ -1,5 +1,5 @@
 const { prepareVisit } = require("./lib/data");
-const { insertVisit } = require("./lib/db");
+const { insertVisit, createVisitsTable } = require("./lib/db");
 
 exports.handler = async event => {
   const requestBody = JSON.parse(event.body) || {};
@@ -15,9 +15,16 @@ exports.handler = async event => {
         statusCode = 201;
         break;
       }
+      case "LINK": {
+        await createVisitsTable();
+        statusCode = 201;
+        body = { message: "visits created" };
+        break;
+      }
       default: {
         statusCode = 200;
         body = { message: "OK" };
+        break;
       }
     }
   } catch (error) {
