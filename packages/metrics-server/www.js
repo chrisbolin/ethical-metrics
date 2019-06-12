@@ -8,8 +8,11 @@ app.use(express.json());
 
 app.route("/").all(async (req, res) => {
   const event = {
-    body: JSON.stringify(req.body)
+    body: JSON.stringify(req.body),
+    httpMethod: req.method
   };
+
+  console.log(event);
 
   const { statusCode, body, headers } = await handler(event);
 
