@@ -30,10 +30,15 @@ function rawFingerprint() {
   });
 }
 
+let cachedClientVisitorID = null;
 function clientVisitorID() {
-  return rawFingerprint().then(fingerprint =>
-    hash(fingerprint, window.location.host)
-  );
+  if (cachedClientVisitorID) {
+    return new Promise(resolve => resolve(cachedClientVisitorID));
+  }
+  return rawFingerprint().then(fingerprint => {
+    cachedClientVisitorID = hash(fingerprint, window.location.host);
+    return cachedClientVisitorID;
+  });
 }
 
 function timezone() {
@@ -84,8 +89,10 @@ function send(body) {
   });
 }
 
+function visit() {
+  payload().then(send);
+}
+
 export default function client() {
-  wait(500)
-    .then(payload)
-    .then(send);
+  wait(500).then(visit);
 }
