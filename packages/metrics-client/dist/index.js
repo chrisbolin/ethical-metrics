@@ -1,5 +1,12 @@
 import Fingerprint from "fingerprintjs2";
 
+function config() {
+  return {
+    url: "//configure-ethical-metrics.please",
+    ...window.ETHICAL_METRICS_CONFIG
+  };
+}
+
 function wait(timeout = 0) {
   return new Promise(resolve => {
     if (typeof window.requestIdleCallback === "function") {
@@ -68,8 +75,7 @@ function payload() {
 }
 
 function send(body) {
-  console.log(body);
-  return fetch("http://localhost:3333/visits", {
+  return fetch(config().url, {
     method: "POST",
     body: JSON.stringify(body),
     headers: {
