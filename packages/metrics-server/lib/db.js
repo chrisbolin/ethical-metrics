@@ -41,7 +41,6 @@ async function createVisitsTable() {
       "browserVersion" text,
       "clientIDVersion" text,
       "createdAt" timestamp with time zone,
-      "deviceID" text,
       "hostname" text,
       "href" text,
       "innerHeight" integer,
@@ -51,7 +50,14 @@ async function createVisitsTable() {
       "osVersion" text,
       "referrer" text,
       "timezone" text,
-      "userAgent" text
+      "userAgent" text,
+      "visitorID" text
+  );
+
+  CREATE INDEX "visits_hostname_createdat_vistorid_idx" ON visits (
+    "hostname",
+    "createdAt",
+    "visitorID"
   );
   `);
   await client.end();

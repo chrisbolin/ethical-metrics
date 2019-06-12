@@ -33,11 +33,11 @@ describe("prepareVisit", () => {
     expect(afterCreatedAt >= visit.createdAt).toBeTruthy();
   });
 
-  it("should create deviceID and remove clientDeviceID", () => {
-    const clientDeviceID = "123";
-    const visit = prepareVisit({ clientDeviceID });
-    expect(visit.deviceID).toHaveLength(64);
-    expect(visit.deviceID).not.toEqual(clientDeviceID);
-    expect(visit.clientDeviceID).toBeUndefined();
+  it("should create visitorID and remove clientVisitorID", () => {
+    const clientVisitorID = "123";
+    const visit = prepareVisit({ clientVisitorID });
+    expect(visit.visitorID).toHaveLength(64);
+    expect(visit.visitorID).not.toEqual(clientVisitorID);
+    expect(visit.clientVisitorID).toBeUndefined();
   });
 });

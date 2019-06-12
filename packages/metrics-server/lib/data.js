@@ -15,13 +15,13 @@ function prepareVisit(payload) {
   const createdAt = new Date().toISOString();
   const userAgentDetails = parseUA(payload.userAgent);
   const { hostname } = url.parse(payload.href);
-  const deviceID = hash(payload.clientDeviceID, PRIVATE_SALT);
-  delete payload.clientDeviceID;
+  const visitorID = hash(payload.clientVisitorID, PRIVATE_SALT);
+  delete payload.clientVisitorID;
 
   return {
     ...payload,
     hostname,
-    deviceID,
+    visitorID,
     createdAt,
     browser: userAgentDetails.browser.name,
     browserVersion: userAgentDetails.browser.version,
