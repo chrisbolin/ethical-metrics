@@ -29,7 +29,7 @@ exports.handler = async event => {
     }
   } catch (error) {
     statusCode = 500;
-    body = { error: error.message };
+    body = { error: error.message, stack: error.stack };
   }
   return {
     statusCode,
