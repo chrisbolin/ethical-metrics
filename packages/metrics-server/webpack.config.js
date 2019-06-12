@@ -9,8 +9,10 @@ module.exports = {
     libraryTarget: "commonjs"
   },
   target: "node",
-  stats: {
-    all: false,
-    assets: true
+  resolve: {
+    alias: {
+      "pg-native": path.join(__dirname, "aliases/pg-native.js"),
+      pgpass$: path.join(__dirname, "aliases/pgpass.js")
+    }
   }
 };
