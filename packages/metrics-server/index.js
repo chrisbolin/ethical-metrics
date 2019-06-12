@@ -2,22 +2,31 @@ const { prepareVisit } = require("./lib/data");
 const { insertVisit } = require("./lib/db");
 
 exports.handler = async event => {
-  const body = JSON.parse(event.body) || {};
+  const requestBody = JSON.parse(event.body) || {};
   let result;
+  let body, statusCode;
 
-  switch (event.httpMethod) {
-    case "POST": {
-      const visit = prepareVisit(body);
-      result = await insertVisit(visit);
-      break;
+  try {
+    switch (event.httpMethod) {
+      case "POST": {
+        const visit = prepareVisit(requestBody);
+        await insertVisit(visit);
+        body = visit;
+        statusCode = 201;
+        break;
+      }
+      default: {
+        statusCode = 200;
+        body = { message: "OK" };
+      }
     }
-    default: {
-      result = { message: "OK" };
-    }
+  } catch (error) {
+    statusCode = 500;
+    body = { error: error.message };
   }
   return {
-    statusCode: 200,
-    body: JSON.stringify(result),
+    statusCode,
+    body: JSON.stringify(body),
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Content-Type": "application/json"
