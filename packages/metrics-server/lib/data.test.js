@@ -27,7 +27,7 @@ describe("hash", () => {
 describe("prepareVisit", () => {
   it("should add createdAt ISO timestamp", () => {
     const beforeCreatedAt = new Date().toISOString();
-    const visit = prepareVisit({});
+    const visit = prepareVisit({ href: "" });
     const afterCreatedAt = new Date().toISOString();
     expect(beforeCreatedAt <= visit.createdAt).toBeTruthy();
     expect(afterCreatedAt >= visit.createdAt).toBeTruthy();
@@ -35,7 +35,7 @@ describe("prepareVisit", () => {
 
   it("should create visitorID and remove clientVisitorID", () => {
     const clientVisitorID = "123";
-    const visit = prepareVisit({ clientVisitorID });
+    const visit = prepareVisit({ clientVisitorID, href: "" });
     expect(visit.visitorID).toHaveLength(64);
     expect(visit.visitorID).not.toEqual(clientVisitorID);
     expect(visit.clientVisitorID).toBeUndefined();
