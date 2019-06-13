@@ -98,3 +98,7 @@ function client() {
 }
 
 client();
+
+window.ethicalMetrics = {
+  visit
+};
