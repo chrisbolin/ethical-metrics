@@ -1,4 +1,5 @@
 import React from "react";
+
 import metrics from "ethical-metrics-client";
 
 window.ETHICAL_METRICS_CONFIG = {
@@ -6,7 +7,6 @@ window.ETHICAL_METRICS_CONFIG = {
 };
 
 function App() {
-  metrics();
   return <pre>metrics-client-demo</pre>;
 }
 

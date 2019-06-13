@@ -93,6 +93,8 @@ function visit() {
   payload().then(send);
 }
 
-export default function client() {
+function client() {
   wait(500).then(visit);
 }
+
+client();

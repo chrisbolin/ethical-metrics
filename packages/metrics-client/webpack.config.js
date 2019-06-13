@@ -8,5 +8,5 @@ module.exports = {
     filename: "index.js",
     libraryTarget: "commonjs"
   },
-  target: "browser"
+  target: "web"
 };
