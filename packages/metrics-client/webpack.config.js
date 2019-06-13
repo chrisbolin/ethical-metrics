@@ -5,8 +5,7 @@ module.exports = {
   entry: "./index",
   output: {
     path: path.resolve("./dist/"),
-    filename: "index.js",
-    libraryTarget: "commonjs"
+    filename: "index.js"
   },
   target: "web",
   module: {
