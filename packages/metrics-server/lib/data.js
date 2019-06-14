@@ -3,8 +3,6 @@ const url = require("url");
 
 const parseUA = require("ua-parser-js");
 
-const PRIVATE_SALT = "e74a3078585adff8695df9ce1102b13e";
-
 function hash(value, salt = "") {
   const shaHash = crypto.createHash("sha256");
   shaHash.update(value + salt);
@@ -15,7 +13,7 @@ function prepareVisit(payload) {
   const createdAt = new Date().toISOString();
   const userAgentDetails = parseUA(payload.userAgent);
   const { hostname } = url.parse(payload.href);
-  const visitorID = hash(payload.clientVisitorID, PRIVATE_SALT);
+  const visitorID = hash(payload.clientVisitorID, hostname);
   delete payload.clientVisitorID;
 
   return {
